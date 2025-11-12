@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../client";
 import Card from "../components/Card";
-import TeamStats from "../components/TeamStats";
 
 const Gallery = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -18,8 +17,6 @@ const Gallery = () => {
 
   return (
     <div className="gallery">
-      <TeamStats pokemons={pokemons} />
-
       <div className="pokemon-grid">
         {pokemons && pokemons.length > 0 ? (
           [...pokemons]
