@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import "./Create.css"
+import "./Create.css";
 
 const Create = () => {
   const [name, setName] = useState("");
-  const [selectedType, setSelectedType] = useState();
+  const [selectedType, setSelectedType] = useState("");
   const [stats, setStats] = useState({
     attack: 1,
     defense: 1,
@@ -101,7 +101,19 @@ const Create = () => {
     };
     console.log("Created Pokemon:", newPokemon);
     // TODO: save to Supabase
-    // TODO: add validation for type and name 
+    // TODO: add validation for type and name
+
+    // Reset Form
+    setName("");
+    setSelectedType("");
+    setStats({
+      attack: 1,
+      defense: 1,
+      specialAttack: 1,
+      specialDefense: 1,
+      speed: 1,
+      hp: 1,
+    });
   };
 
   return (
@@ -122,20 +134,20 @@ const Create = () => {
         <div className="type-selection">
           <h3>Choose Type:</h3>
           <div className="type-options">
-          {["Fire", "Water", "Grass", "Electric", "Psychic", "Dark"].map(
-            (type) => (
-              <label key={type} className="type-option">
-                <input
-                  type="radio"
-                  name="pokemonType"
-                  value={type}
-                  checked={selectedType === type}
-                  onChange={(e) => setSelectedType(e.target.value)}
-                />
-                <span className="type-label">{type}</span>
-              </label>
-            )
-          )}
+            {["Fire", "Water", "Grass", "Electric", "Psychic", "Dark"].map(
+              (type) => (
+                <label key={type} className="type-option">
+                  <input
+                    type="radio"
+                    name="pokemonType"
+                    value={type}
+                    checked={selectedType === type}
+                    onChange={(e) => setSelectedType(e.target.value)}
+                  />
+                  <span className="type-label">{type}</span>
+                </label>
+              )
+            )}
           </div>
         </div>
 
