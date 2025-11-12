@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Gallery from "./pages/Gallery";
 import NotFound from "./routes/NotFound";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='create' element={<Create />} />
           <Route path='gallery' element={<Gallery />} />
+          <Route path='about' element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
