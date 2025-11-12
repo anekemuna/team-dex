@@ -31,7 +31,7 @@ const NavBar = () => {
               isActive ? "nav-link active" : "nav-link"
             }
           >
-            <li>Gallery</li>
+            <li>Team Gallery</li>
           </NavLink>
         </ul>
       </nav>
