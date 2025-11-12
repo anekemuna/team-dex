@@ -63,6 +63,7 @@ GIF created with ...
 ## Notes
 
 The hardest part I faced was styling the application.
+need to lift state variables up - i.e. Pokemons list into App since gallery and summary use it
 
 ## License
 

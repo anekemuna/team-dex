@@ -1,0 +1,180 @@
+/* Pokémon Card Component - Square Grid Design */
+
+.card {
+  background: linear-gradient(
+    145deg,
+    rgba(30, 41, 59, 0.9),
+    rgba(15, 23, 36, 0.8)
+  );
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 203, 5, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--type-color, #ffcb05);
+  transition: height 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 203, 5, 0.3);
+}
+
+.card:hover::before {
+  height: 6px;
+}
+
+/* Card content styling */
+.card p {
+  margin: 0 0 0.75rem 0;
+  color: #e2e8f0;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Pokemon ID styling */
+.card p:first-child {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+/* Name styling */
+.card p:nth-child(2) {
+  color: #ffcb05;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Type styling */
+.card p:nth-child(3) {
+  color: #ffd54d;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.25rem 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: 0.5px solid var(--type-color, rgba(255, 203, 5, 0.3));
+}
+
+/* Type-specific card colors */
+.card.type-fire {
+  --type-color: #ff6b47;
+}
+
+.card.type-water {
+  --type-color: #42a5f5;
+}
+
+.card.type-grass {
+  --type-color: #66bb6a;
+}
+
+.card.type-electric {
+  --type-color: #ffee58;
+}
+
+.card.type-psychic {
+  --type-color: #ab47bc;
+}
+
+.card.type-dark {
+  --type-color: #78909c;
+}
+
+/* Type-specific hover effects */
+.card.type-fire:hover {
+  box-shadow: 0 16px 48px rgba(255, 107, 71, 0.2);
+}
+
+.card.type-water:hover {
+  box-shadow: 0 16px 48px rgba(66, 165, 245, 0.2);
+}
+
+.card.type-grass:hover {
+  box-shadow: 0 16px 48px rgba(102, 187, 106, 0.2);
+}
+
+.card.type-electric:hover {
+  box-shadow: 0 16px 48px rgba(255, 238, 88, 0.2);
+}
+
+.card.type-psychic:hover {
+  box-shadow: 0 16px 48px rgba(171, 71, 188, 0.2);
+}
+
+.card.type-dark:hover {
+  box-shadow: 0 16px 48px rgba(120, 144, 156, 0.2);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+    min-height: 180px;
+  }
+  
+  .card p:first-child {
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .card p:nth-child(2) {
+    font-size: 1.1rem;
+  }
+  
+  .card p:nth-child(3) {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 0.875rem;
+    min-height: 160px;
+  }
+  
+  .card p:first-child {
+    font-size: 0.7rem;
+  }
+
+  .card p:nth-child(2) {
+    font-size: 1rem;
+  }
+  
+  .card p:nth-child(3) {
+    font-size: 0.8rem;
+    padding: 0.15rem 0.5rem;
+  }
+}

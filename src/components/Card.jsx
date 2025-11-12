@@ -1,13 +1,14 @@
-import React from 'react'
+import React from "react";
+import "./Card.css";
 
-const Card = ({ pokemon}) => {
+const Card = ({ pokemon }) => {
   return (
-    <div className='card'>
-        <p>{pokemon.id}</p>
-        <p>Name: {pokemon.name}</p>
-        <p>Type: {pokemon.type}</p>
+    <div className={`card type-${pokemon.type.toLowerCase()}`}>
+      <p>#{pokemon.id}</p>
+      <p>{pokemon.name}</p>
+      <p>{pokemon.type}</p>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

@@ -220,7 +220,7 @@
 }
 
 /* Summary.jsx */
-.summary {
+.summary, .gallery {
   flex: 1;
   padding: 2rem;
   background: linear-gradient(135deg, #1e293b, #0f172a);
