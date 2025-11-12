@@ -14,7 +14,7 @@ The following **required** functionality is completed:
 - [x] **The web app contains a page that features a create form to add a new crewmate**
   - Users can name the crewmate
   - Users can set the crewmate’s attributes by clicking on one of several values
-- [ ] **The web app includes a summary page of all the user’s added crewmatese**
+- [x] **The web app includes a summary page of all the user’s added crewmatese**
   -  The web app contains a summary page dedicated to displaying all the crewmates the user has made so far
   -  The summary page is sorted by creation date such that the most recently created crewmates appear at the top
 - [ ] **A previously created crewmate can be updated from the list of crewmates in the summary page**
@@ -36,15 +36,16 @@ The following **optional** features are implemented:
   - User can choose a `category` option to describe their crewmate before any attributes are specified
     - *I implemented this by changing the ranges of the stats based on the Pokémon's type.*
   - Based on the category value, users are allowed to access only a subset of the possible attributes
-- [ ] A section of the summary page, displays summary statistics about a user’s crew on their crew page
+- [x] A section of the summary page, displays summary statistics about a user’s crew on their crew page
   - e.g., the percent of members with a certain attribute 
-- [ ] The summary page displays a custom “success” metric about a user’s crew which changes the look of the crewmate list
+- [x] The summary page displays a custom “success” metric about a user’s crew which changes the look of the crewmate list
   - e.g., a pirate crew’s predicted success at commandeering a new galley
 
 
 The following **additional** features are implemented:
 
 * [x] An About Page to explain how the stats work.
+* [x] Had to split the Summary page into Gallery and Summary (stats) due to it being clunky.
 
 ## Video Walkthrough
 
@@ -61,9 +62,7 @@ GIF created with ...
 
 ## Notes
 
-Describe any challenges encountered while building the app.
-- need to make it navbar sticky/ no scrolling
-- nested routes in gallery, so gallery/summary stats or gallery/pokemons
+The hardest part I faced was styling the application.
 
 ## License
 
