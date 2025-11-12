@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Create = () => {
   const [name, setName] = useState("");
@@ -12,6 +12,7 @@ const Create = () => {
     hp: 1,
   });
 
+  // Takes the stat name and the value, and updates it using setStat (useState setter)
   const updateStat = (statName, value) => {
     setStats((prev) => ({
       ...prev,
@@ -19,6 +20,7 @@ const Create = () => {
     }));
   };
 
+  // Sets upper and lowerbound of stats based on the type of pokemon
   const getStatLimits = (statName, type) => {
     const limits = {
       Fire: {
@@ -71,6 +73,34 @@ const Create = () => {
       },
     };
     return limits[type]?.[statName] || [1, 10];
+  };
+
+  useEffect(() => {
+    if (selectedType) {
+      // Reset all stats to minimum values for new type
+      setStats({
+        attack: getStatLimits("attack", selectedType)[0],
+        defense: getStatLimits("defense", selectedType)[0],
+        specialAttack: getStatLimits("specialAttack", selectedType)[0],
+        specialDefense: getStatLimits("specialDefense", selectedType)[0],
+        speed: getStatLimits("speed", selectedType)[0],
+        hp: getStatLimits("hp", selectedType)[0],
+      });
+    }
+  }, [selectedType]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newPokemon = {
+      id: 1111, // temporary ID
+      name,
+      type: selectedType,
+      stats,
+      createdAt: new Date().toISOString(),
+    };
+    console.log("Created Pokemon:", newPokemon);
+    // TODO: save to Supabase
+    // TODO: add validation for type and name 
   };
 
   return (
@@ -208,7 +238,7 @@ const Create = () => {
           </div>
         </div>
 
-        <input type="submit" value="Create Pokémon" />
+        <input type="submit" value="Create Pokémon" onClick={handleSubmit} />
         <input type="button" value="Cancel" />
       </form>
     </div>
