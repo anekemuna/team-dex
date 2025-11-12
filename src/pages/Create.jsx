@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Create.css";
+import { supabase } from "../client";
 
 const Create = () => {
   const [name, setName] = useState("");
@@ -92,28 +93,50 @@ const Create = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newPokemon = {
-      id: 1111, // temporary ID
-      name,
-      type: selectedType,
-      stats,
-      createdAt: new Date().toISOString(),
-    };
-    console.log("Created Pokemon:", newPokemon);
-    // TODO: save to Supabase
-    // TODO: add validation for type and name
+    // const newPokemon = {
+    //   id: 1111, // temporary ID
+    //   name,
+    //   type: selectedType,
+    //   stats,
+    //   createdAt: new Date().toISOString(),
+    // };
+    // console.log("Created Pokemon:", newPokemon);
 
-    // Reset Form
-    setName("");
-    setSelectedType("");
-    setStats({
-      attack: 1,
-      defense: 1,
-      specialAttack: 1,
-      specialDefense: 1,
-      speed: 1,
-      hp: 1,
-    });
+    // Check that name and type is not empty first
+    if (name === "") {
+      alert("Name Field Cannot Be Empty!");
+    } else if (selectedType === "") {
+      alert("A Type Has To Be Selected!");
+    } else {
+      // Save to Supabase
+      await supabase
+        .from("Pokemons")
+        .insert({
+          name: name,
+          type: selectedType,
+          attack: stats.attack,
+          defense: stats.defense,
+          special_attack: stats.specialAttack,
+          special_defense: stats.specialDefense,
+          speed: stats.speed,
+          hp: stats.hp,
+        })
+        .select();
+
+      // Reset Form
+      setName("");
+      setSelectedType("");
+      setStats({
+        attack: 1,
+        defense: 1,
+        specialAttack: 1,
+        specialDefense: 1,
+        speed: 1,
+        hp: 1,
+      });
+
+      alert("Successfully Submitted!");
+    }
   };
 
   return (
