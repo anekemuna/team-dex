@@ -243,7 +243,6 @@ const Create = () => {
         </div>
 
         <input type="submit" value="Create Pokémon" onClick={handleSubmit} />
-        <input type="button" value="Cancel" />
       </form>
     </div>
   );
