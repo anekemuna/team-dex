@@ -4,7 +4,7 @@ Submitted by: **Munachimso Aneke**
 
 This web app: **This web app allows you to create your own Pokémon team. You can choose the type and stats.**
 
-Time spent: **12.5** hours spent in total
+Time spent: **14** hours spent in total
 
 ## Required Features
 
@@ -62,6 +62,8 @@ GIF created with ...
 ## Notes
 
 Describe any challenges encountered while building the app.
+- need to make it navbar sticky/ no scrolling
+- nested routes in gallery, so gallery/summary stats or gallery/pokemons
 
 ## License
 
