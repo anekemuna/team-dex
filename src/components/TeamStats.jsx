@@ -1,4 +1,5 @@
 import React from "react";
+import "./TeamStats.css";
 
 const TeamStats = ({ pokemons }) => {
   if (!pokemons || pokemons.length === 0) return null;
@@ -55,7 +56,7 @@ const TeamStats = ({ pokemons }) => {
       <div className="type-breakdown">
         <h4>Type Distribution</h4>
         {Object.entries(typeDistribution).map(([type, count]) => (
-          <div key={type} className="type-stat">
+          <div key={type} className={`type-stat type-${type.toLowerCase()}`}>
             <span>{type}</span>
             <span>
               {count} ({Math.round((count / totalCount) * 100)}%)

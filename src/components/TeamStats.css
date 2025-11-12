@@ -1,0 +1,190 @@
+/* TeamStats Component - Pokémon-themed styling */
+
+.team-stats {
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 203, 5, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.team-stats h3 {
+  color: #ffcb05;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Stats Grid Layout */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid rgba(255, 203, 5, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 203, 5, 0.1);
+}
+
+.stat-card h4 {
+  color: #ffd54d;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  color: #ffcb05;
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: block;
+}
+
+/* Type Distribution */
+.type-breakdown {
+  margin-bottom: 1.5rem;
+}
+
+.type-breakdown h4 {
+  color: #ffd54d;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.type-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border-left: 4px solid var(--type-color, #ffcb05);
+  transition: background 0.2s ease;
+}
+
+.type-stat:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.type-stat span:first-child {
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.type-stat span:last-child {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+/* Type-specific colors */
+.type-stat.type-fire {
+  border-left-color: #ff6b47;
+}
+
+.type-stat.type-water {
+  border-left-color: #42a5f5;
+}
+
+.type-stat.type-grass {
+  border-left-color: #66bb6a;
+}
+
+.type-stat.type-electric {
+  border-left-color: #ffee58;
+}
+
+.type-stat.type-psychic {
+  border-left-color: #ab47bc;
+}
+
+.type-stat.type-dark {
+  border-left-color: #78909c;
+}
+
+/* Average Stats */
+.avg-stats h4 {
+  color: #ffd54d;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.avg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+.avg-grid span {
+  background: rgba(0, 0, 0, 0.2);
+  color: #e2e8f0;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  border: 1px solid rgba(255, 203, 5, 0.1);
+  transition: background 0.2s ease;
+}
+
+.avg-grid span:hover {
+  background: rgba(255, 203, 5, 0.05);
+  border-color: rgba(255, 203, 5, 0.2);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .team-stats {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    padding: 0.75rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .avg-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .avg-grid {
+    grid-template-columns: 1fr;
+  }
+}
