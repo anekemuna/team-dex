@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../client";
 import Card from "../components/Card";
+import TeamStats from "../components/TeamStats";
 
 const Gallery = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -17,13 +18,17 @@ const Gallery = () => {
 
   return (
     <div className="gallery">
-      {pokemons && pokemons.length > 0 ? (
-        [...pokemons]
-          .sort((a, b) => a.id - b.id)
-          .map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)
-      ) : (
-        <h2>{"No Pokémons Yet 💔"}</h2>
-      )}
+      <TeamStats pokemons={pokemons} />
+
+      <div className="pokemon-grid">
+        {pokemons && pokemons.length > 0 ? (
+          [...pokemons]
+            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+            .map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)
+        ) : (
+          <h2>{"No Pokémons Yet 💔"}</h2>
+        )}
+      </div>
     </div>
   );
 };
