@@ -4,14 +4,14 @@ Submitted by: **Munachimso Aneke**
 
 This web app: **This web app allows you to create your own Pokémon team. You can choose the type and stats.**
 
-Time spent: **11** hours spent in total
+Time spent: **12.5** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
 
-- [ ] **The web app contains a page that features a create form to add a new crewmate**
+- [x] **The web app contains a page that features a create form to add a new crewmate**
   - Users can name the crewmate
   - Users can set the crewmate’s attributes by clicking on one of several values
 - [ ] **The web app includes a summary page of all the user’s added crewmatese**
@@ -31,9 +31,10 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] A crewmate can be given a category upon creation which restricts their attribute value options
+- [x] A crewmate can be given a category upon creation which restricts their attribute value options
   - e.g., a Dungeons and Dragons class or a development team role (project manager, product owner, etc.)
   - User can choose a `category` option to describe their crewmate before any attributes are specified
+    - *I implemented this by changing the ranges of the stats based on the Pokémon's type.*
   - Based on the category value, users are allowed to access only a subset of the possible attributes
 - [ ] A section of the summary page, displays summary statistics about a user’s crew on their crew page
   - e.g., the percent of members with a certain attribute 
@@ -43,7 +44,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you added to improve the site's functionality!
+* [x] An About Page to explain how the stats work.
 
 ## Video Walkthrough
 
