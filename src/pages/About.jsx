@@ -1,12 +1,12 @@
 const About = () => {
   return (
     <div className="about">
-      <h2>Classic Pokémon Theme — How Type Restrictions Work</h2>
+      <h2>Stats Info</h2>
 
       <section>
         <p>
           Each Pokémon has a Type and six stats. Types restrict the possible
-          ranges for each stat so every Type has clear strengths and weaknesses.
+          ranges for each stat. This means each type has clear strengths and weaknesses.
         </p>
       </section>
 
