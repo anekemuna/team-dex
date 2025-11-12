@@ -19,6 +19,59 @@ const Create = () => {
     }));
   };
 
+  const getStatLimits = (statName, type) => {
+    const limits = {
+      Fire: {
+        attack: [1, 10],
+        defense: [1, 8],
+        specialAttack: [1, 9],
+        specialDefense: [1, 6],
+        speed: [1, 8],
+        hp: [1, 7],
+      },
+      Water: {
+        attack: [1, 7],
+        defense: [1, 9],
+        specialAttack: [1, 8],
+        specialDefense: [1, 9],
+        speed: [1, 6],
+        hp: [1, 10],
+      },
+      Grass: {
+        attack: [1, 6],
+        defense: [1, 8],
+        specialAttack: [1, 9],
+        specialDefense: [1, 10],
+        speed: [1, 5],
+        hp: [1, 8],
+      },
+      Electric: {
+        attack: [1, 6],
+        defense: [1, 5],
+        specialAttack: [1, 10],
+        specialDefense: [1, 7],
+        speed: [1, 10],
+        hp: [1, 6],
+      },
+      Psychic: {
+        attack: [1, 4],
+        defense: [1, 5],
+        specialAttack: [1, 10],
+        specialDefense: [1, 9],
+        speed: [1, 8],
+        hp: [1, 7],
+      },
+      Dark: {
+        attack: [1, 9],
+        defense: [1, 7],
+        specialAttack: [1, 6],
+        specialDefense: [1, 8],
+        speed: [1, 9],
+        hp: [1, 6],
+      },
+    };
+    return limits[type]?.[statName] || [1, 10];
+  };
 
   return (
     <div className="create">
@@ -54,94 +107,103 @@ const Create = () => {
         </div>
 
         <div className="stat-controls">
+          {/* ATTACK */}
           <div className="attack-selection">
             <label htmlFor="attack">Attack:</label>
             <input
               type="range"
               id="attack"
-              // min={getStatMin("attack", selectedType)}
-              // max={getStatMax("attack", selectedType)}
+              min={getStatLimits("attack", selectedType)[0]}
+              max={getStatLimits("attack", selectedType)[1]}
               value={stats.attack}
               onChange={(e) => updateStat("attack", e.target.value)}
             />
             <span>
-              {/* {stats.attack}/{getStatMax("attack", selectedType)} */}
+              {stats.attack}/{getStatLimits("attack", selectedType)[1]}
             </span>
           </div>
+
+          {/* DEFENSE */}
 
           <div className="defense-selection">
             <label htmlFor="defense">Defense:</label>
             <input
               type="range"
               id="defense"
-              // min={getStatMin("attack", selectedType)}
-              // max={getStatMax("attack", selectedType)}
+              min={getStatLimits("defense", selectedType)[0]}
+              max={getStatLimits("defense", selectedType)[1]}
               value={stats.defense}
               onChange={(e) => updateStat("defense", e.target.value)}
             />
             <span>
-              {/* {stats.attack}/{getStatMax("attack", selectedType)} */}
+              {stats.defense}/{getStatLimits("defense", selectedType)[1]}
             </span>
           </div>
-          {/* Repeat for defense, specialAttack, specialDefense, speed, hp */}
+
+          {/* SPECIAL ATTACK */}
 
           <div className="special-attack-selection">
             <label htmlFor="special-attack">Special Attack:</label>
             <input
               type="range"
               id="special-attack"
-              // min={getStatMin("attack", selectedType)}
-              // max={getStatMax("attack", selectedType)}
+              min={getStatLimits("specialAttack", selectedType)[0]}
+              max={getStatLimits("specialAttack", selectedType)[0]}
               value={stats.specialAttack}
               onChange={(e) => updateStat("specialAttack", e.target.value)}
             />
             <span>
-              {/* {stats.attack}/{getStatMax("attack", selectedType)} */}
+              {stats.specialAttack}/
+              {getStatLimits("specialAttack", selectedType)[1]}
             </span>
           </div>
 
+          {/* SPECIAL DEFENSE */}
           <div className="special-defense-selection">
             <label htmlFor="special-defense">Special Defense:</label>
             <input
               type="range"
               id="special-defense"
-              // min={getStatMin("attack", selectedType)}
-              // max={getStatMax("attack", selectedType)}
+              min={getStatLimits("specialDefense", selectedType)[0]}
+              max={getStatLimits("specialDefense", selectedType)[1]}
               value={stats.specialDefense}
               onChange={(e) => updateStat("specialDefense", e.target.value)}
             />
             <span>
-              {/* {stats.attack}/{getStatMax("attack", selectedType)} */}
+              {stats.specialDefense}/
+              {getStatLimits("specialDefense", selectedType)[1]}
             </span>
           </div>
 
+          {/* SPEED */}
           <div className="speed-selection">
             <label htmlFor="speed">Speed:</label>
             <input
               type="range"
               id="speed"
-              // min={getStatMin("attack", selectedType)}
-              // max={getStatMax("attack", selectedType)}
+              min={getStatLimits("speed", selectedType)[0]}
+              max={getStatLimits("speed", selectedType)[1]}
               value={stats.speed}
               onChange={(e) => updateStat("speed", e.target.value)}
             />
             <span>
-              {/* {stats.attack}/{getStatMax("attack", selectedType)} */}
+              {stats.speed}/{getStatLimits("speed", selectedType)[1]}
             </span>
           </div>
 
+          {/* HP */}
           <div className="hp-selection">
             <label htmlFor="hp">HP:</label>
             <input
               type="range"
               id="hp"
-              // min={getStatMin("attack", selectedType)}
-              // max={getStatMax("attack", selectedType)}
+              min={getStatLimits("hp", selectedType)[0]}
+              max={getStatLimits("hp", selectedType)[1]}
               value={stats.hp}
               onChange={(e) => updateStat("hp", e.target.value)}
             />
             <span>
-              {/* {stats.attack}/{getStatMax("attack", selectedType)} */}
+              {stats.hp}/{getStatLimits("hp", selectedType)[1]}
             </span>
           </div>
         </div>
