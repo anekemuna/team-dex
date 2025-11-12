@@ -9,11 +9,15 @@
 }
 
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: var(--nav-width);
-  min-height: 100vh;
+  height: 100vh;
   padding: 1.5rem 1rem;
   background: linear-gradient(180deg, var(--nav-bg-1), var(--nav-bg-2));
   color: #fff;
@@ -102,11 +106,16 @@
 /* Mobile layout - collapse to horizontal navbar */
 @media (max-width: 768px) {
   .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    min-height: auto;
+    height: auto;
     padding: 0.75rem 1rem;
     gap: 1rem;
   }
