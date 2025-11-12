@@ -1,0 +1,186 @@
+/* Pokemon-themed Create Form Styles */
+
+/* CSS Custom Properties for Pokemon Types */
+:root {
+  --fire-primary: #ff6b47;
+  --fire-secondary: #ff8a65;
+  --water-primary: #42a5f5;
+  --water-secondary: #64b5f6;
+  --grass-primary: #66bb6a;
+  --grass-secondary: #81c784;
+  --electric-primary: #ffee58;
+  --electric-secondary: #fff176;
+  --psychic-primary: #ab47bc;
+  --psychic-secondary: #ba68c8;
+  --dark-primary: #78909c;
+  --dark-secondary: #90a4ae;
+}
+
+/* Main Container */
+.create {
+  flex: 1;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #e2e8f0;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+
+/* Type-based color variables */
+.create[data-type="Fire"] {
+  --accent-color: #ff6b47;
+  --accent-light: rgba(255, 107, 71, 0.1);
+}
+
+.create[data-type="Water"] {
+  --accent-color: #42a5f5;
+  --accent-light: rgba(66, 165, 245, 0.1);
+}
+
+.create[data-type="Grass"] {
+  --accent-color: #66bb6a;
+  --accent-light: rgba(102, 187, 106, 0.1);
+}
+
+.create[data-type="Electric"] {
+  --accent-color: #ffee58;
+  --accent-light: rgba(255, 238, 88, 0.1);
+}
+
+.create[data-type="Psychic"] {
+  --accent-color: #ab47bc;
+  --accent-light: rgba(171, 71, 188, 0.1);
+}
+
+.create[data-type="Dark"] {
+  --accent-color: #78909c;
+  --accent-light: rgba(120, 144, 156, 0.1);
+}
+
+/* Form Layout */
+.create form {
+  background: rgba(30, 41, 59, 0.7);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid var(--accent-light, rgba(255, 203, 5, 0.1));
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 20px var(--accent-light, rgba(255, 203, 5, 0.05));
+  margin-top: 1rem;
+}
+
+.create h2,
+.create h3 {
+  color: var(--accent-color, #ffcb05);
+}
+
+/* Slider styling */
+input[type="range"] {
+  accent-color: var(--accent-color, #ffcb05);
+}
+
+/* Type selection styling */
+.type-selection {
+  margin: 1.5rem 0;
+}
+
+.type-selection label {
+  display: inline-block;
+  margin: 0.5rem 1rem 0.5rem 0;
+  padding: 0.5rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.type-selection label:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.type-selection label:has(input:checked) {
+  background: var(--accent-light, rgba(255, 203, 5, 0.1));
+  border-color: var(--accent-color, #ffcb05);
+  color: var(--accent-color, #ffcb05);
+  font-weight: 600;
+}
+
+.type-selection input[type="radio"] {
+  display: none;
+}
+
+/* Stat controls */
+.stat-controls {
+  margin: 1.5rem 0;
+}
+
+.stat-controls > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent-color, #ffcb05);
+}
+
+.stat-controls label {
+  min-width: 120px;
+  font-weight: 500;
+  color: var(--accent-color, #ffcb05);
+}
+
+.stat-controls input[type="range"] {
+  flex: 1;
+  margin: 0 1rem;
+}
+
+.stat-controls span {
+  min-width: 60px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--accent-color, #ffcb05);
+}
+
+/* Input styling */
+.name-input {
+  margin: 1rem 0;
+}
+
+.name-input input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  color: #e2e8f0;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.name-input input:focus {
+  outline: none;
+  border-color: var(--accent-color, #ffcb05);
+}
+
+/* Submit button */
+input[type="submit"] {
+  background: var(--accent-color, #ffcb05);
+  color: #0f172a;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+}
+
+input[type="submit"]:hover {
+  background: var(--accent-color, #ffcb05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./Create.css"
 
 const Create = () => {
   const [name, setName] = useState("");
@@ -104,7 +105,7 @@ const Create = () => {
   };
 
   return (
-    <div className="create">
+    <div className="create" data-type={selectedType}>
       <h2> Create New Pokémon </h2>
       <form>
         <div className="name-input">
@@ -119,10 +120,11 @@ const Create = () => {
         </div>
 
         <div className="type-selection">
-          <label>Type:</label>
+          <h3>Choose Type:</h3>
+          <div className="type-options">
           {["Fire", "Water", "Grass", "Electric", "Psychic", "Dark"].map(
             (type) => (
-              <label key={type}>
+              <label key={type} className="type-option">
                 <input
                   type="radio"
                   name="pokemonType"
@@ -130,13 +132,15 @@ const Create = () => {
                   checked={selectedType === type}
                   onChange={(e) => setSelectedType(e.target.value)}
                 />
-                {type}
+                <span className="type-label">{type}</span>
               </label>
             )
           )}
+          </div>
         </div>
 
         <div className="stat-controls">
+          <h3>Set Stats</h3>
           {/* ATTACK */}
           <div className="attack-selection">
             <label htmlFor="attack">Attack:</label>
