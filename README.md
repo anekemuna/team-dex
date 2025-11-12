@@ -4,7 +4,7 @@ Submitted by: **Munachimso Aneke**
 
 This web app: **This web app allows you to create your own Pokémon team. You can choose the type and stats.**
 
-Time spent: **14** hours spent in total
+Time spent: **14.5** hours spent in total
 
 ## Required Features
 
