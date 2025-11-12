@@ -148,7 +148,7 @@ const Create = () => {
               type="range"
               id="special-attack"
               min={getStatLimits("specialAttack", selectedType)[0]}
-              max={getStatLimits("specialAttack", selectedType)[0]}
+              max={getStatLimits("specialAttack", selectedType)[1]}
               value={stats.specialAttack}
               onChange={(e) => updateStat("specialAttack", e.target.value)}
             />
