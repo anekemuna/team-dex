@@ -67,6 +67,10 @@ need to lift state variables up - i.e. Pokemons list into App since gallery and 
 
 - edit form component
 
+## Credits & Attribution
+
+- Pokémon type SVG icons by [duiker101](https://github.com/duiker101/pokemon-type-svg-icons)
+
 ## License
 
     Copyright [2025] [Munachimso Aneke]

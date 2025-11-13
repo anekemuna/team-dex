@@ -139,13 +139,73 @@
   box-shadow: 0 16px 48px rgba(120, 144, 156, 0.2);
 }
 
+.pokemon-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  height: 60px; /* Fixed height for consistency */
+}
+
+.type-emoji {
+  font-size: 3rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* SVG Type Icon Styling */
+.type-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Type-specific icon backgrounds with glowing effects */
+.card.type-fire .type-icon {
+  background: #fba54c;
+  box-shadow: 0 0 20px #fba54c;
+}
+
+.card.type-water .type-icon {
+  background: #539ddf;
+  box-shadow: 0 0 20px #539ddf;
+}
+
+.card.type-grass .type-icon {
+  background: #5fbd58;
+  box-shadow: 0 0 20px #5fbd58;
+}
+
+.card.type-electric .type-icon {
+  background: #f2d94e;
+  box-shadow: 0 0 20px #f2d94e;
+}
+
+.card.type-psychic .type-icon {
+  background: #ab47bc;
+  box-shadow: 0 0 20px #ab47bc;
+}
+
+.card.type-dark .type-icon {
+  background: #595761;
+  box-shadow: 0 0 20px #595761;
+}
+
+/* Hover effects for icons */
+.card:hover .type-icon {
+  filter: saturate(200%);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 30px currentColor;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .card {
     padding: 1rem;
     min-height: 180px;
   }
-  
+
   .card p:first-child {
     top: 0.5rem;
     right: 0.5rem;
@@ -155,7 +215,7 @@
   .card p:nth-child(2) {
     font-size: 1.1rem;
   }
-  
+
   .card p:nth-child(3) {
     font-size: 0.85rem;
     padding: 0.2rem 0.6rem;
@@ -171,7 +231,7 @@
     padding: 0.875rem;
     min-height: 160px;
   }
-  
+
   .card p:first-child {
     font-size: 0.7rem;
   }
@@ -179,7 +239,7 @@
   .card p:nth-child(2) {
     font-size: 1rem;
   }
-  
+
   .card p:nth-child(3) {
     font-size: 0.8rem;
     padding: 0.15rem 0.5rem;
