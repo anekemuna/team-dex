@@ -121,6 +121,17 @@ const About = () => {
             </a>
             , MIT License
           </li>
+          <li>
+            <strong>Pikachu Image:</strong>{" "}
+            <a
+              href="https://freesvgplanet.com/pokemon-svg-free-pikachu-svg-instant-download-pokemon-gym-logo-svg-pokemon-vector-pokemon-svg-cutting-files-dxf-png/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+             freesvgplanet.com/pokemon-svg-free...
+            </a>
+        
+          </li>
         </ul>
       </section>
     </div>
