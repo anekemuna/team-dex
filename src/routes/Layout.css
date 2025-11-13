@@ -16,7 +16,7 @@
   width: 40px;
   height: 40px;
   opacity: 0.3;
-  bottom: 20px;
+  bottom: 60px;
   left: -60px; /* Start off-screen */
   filter: drop-shadow(0 2px 8px rgba(255, 203, 5, 0.2));
   animation: rollAcross 12s linear infinite;
@@ -37,7 +37,7 @@
 /* Stagger multiple pokeballs */
 .pokeball-animation:nth-child(1) {
   animation-delay: 0s;
-  bottom: 15px;
+  bottom: 55px;
 }
 
 /* Add more pokeballs with different timing and positions */
@@ -56,13 +56,13 @@
 }
 
 .rolling-pokeball::before {
-  bottom: 45px;
+  bottom: 85px;
   animation: rollAcross 15s linear infinite;
   animation-delay: 4s;
 }
 
 .rolling-pokeball::after {
-  bottom: 75px;
+  bottom: 115px;
   width: 30px;
   height: 30px;
   animation: rollAcross 18s linear infinite;
