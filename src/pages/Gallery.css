@@ -6,6 +6,53 @@
   background: linear-gradient(135deg, #0f1724 0%, #1e293b 50%, #0f1724 100%);
 }
 
+/* Empty State Styling */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  grid-column: 1 / -1; /* Span full width of grid */
+}
+
+.empty-pokeball {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  animation: float 3s ease-in-out infinite;
+}
+
+.empty-state h2 {
+  color: #ffcb05;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.5px;
+}
+
+.empty-state p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  font-weight: 400;
+  max-width: 400px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Floating animation for the Pokéball */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 .gallery h2 {
   color: #ffcb05;
   text-align: center;
