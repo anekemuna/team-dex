@@ -70,6 +70,7 @@ need to lift state variables up - i.e. Pokemons list into App since gallery and 
 ## Credits & Attribution
 
 - Pokémon type SVG icons by [duiker101](https://github.com/duiker101/pokemon-type-svg-icons)
+- Pokéball SVG icons by [Andreuvv, Public domain, via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pok%C3%A9_Ball_icon.svg)
 
 ## License
 
