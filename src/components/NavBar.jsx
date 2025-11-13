@@ -1,10 +1,12 @@
 import { NavLink } from "react-router";
 import "./NavBar.css";
+import pokeballIcon from "../assets/pokeball.svg";
 
 const NavBar = () => {
   return (
     <div className="navbar">
       <div className="navbar-title">
+        <img src={pokeballIcon} alt="Pokéball" className="pokeball-nav" />
         <h2>Team Dex</h2>
       </div>
       <nav>

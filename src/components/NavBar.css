@@ -43,6 +43,19 @@
   font-weight: 700;
 }
 
+/* Pokéball icon styling */
+.pokeball-nav {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.2s ease;
+}
+
+.pokeball-nav:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
 /* Navigation list - vertical layout */
 .nav-list {
   display: flex;
