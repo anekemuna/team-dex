@@ -144,7 +144,7 @@ const Create = () => {
       <h2> Create New Pokémon </h2>
       <form>
         <div className="name-input">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name"><h3>Name:</h3></label>
           <input
             type="text"
             id="name"

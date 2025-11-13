@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import { supabase } from "../client";
+import "./Edit.css"
 
 const Edit = () => {
   const { id } = useParams();
@@ -171,18 +172,18 @@ const Edit = () => {
   }
 
   return (
-    <div className="edit">
+    <div className="edit" data-type={selectedType}>
       <div className="edit-header">
         <Link to={`/gallery/detail/${id}`} className="back-button">
           ← Back to Details
         </Link>
-        <h1>Edit {pokemon.name}</h1>
+        <h1 className="pokemon-name">Editing: {pokemon.name}</h1>
+        <span className="pokemon-id">#{pokemon.id}</span>
       </div>
 
-      <div className="">
         <form>
           <div className="name-input">
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name"><h3>Name:</h3></label>
             <input
               type="text"
               id="name"
@@ -318,7 +319,6 @@ const Edit = () => {
           <input type="submit" value="Update Pokémon" onClick={handleUpdate} />
         </form>
       </div>
-    </div>
   );
 };
 
