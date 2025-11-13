@@ -6,7 +6,8 @@ const About = () => {
       <section>
         <p>
           Each Pokémon has a Type and six stats. Types restrict the possible
-          ranges for each stat. This means each type has clear strengths and weaknesses.
+          ranges for each stat. This means each type has clear strengths and
+          weaknesses.
         </p>
       </section>
 
@@ -94,6 +95,34 @@ const About = () => {
         The rules above are used in the Create form to limit stat choices and
         encourage strategic decisions when building teams.
       </p>
+
+      <section>
+        <h3>Credits & Attribution</h3>
+        <ul>
+          <li>
+            <strong>Pokéball Icon:</strong>{" "}
+            <a
+              href="https://commons.wikimedia.org/wiki/File:Pok%C3%A9_Ball_icon.svg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Andreuvv
+            </a>
+            , Public domain, via Wikimedia Commons
+          </li>
+          <li>
+            <strong>Type Icons:</strong>{" "}
+            <a
+              href="https://github.com/duiker101/pokemon-type-svg-icons"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              duiker101/pokemon-type-svg-icons
+            </a>
+            , MIT License
+          </li>
+        </ul>
+      </section>
     </div>
   );
 };
