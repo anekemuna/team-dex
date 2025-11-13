@@ -1,0 +1,101 @@
+/* Rolling Pokéball Background Animation */
+
+.rolling-pokeball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Don't interfere with clicks */
+  z-index: 1; /* Behind content but above background */
+  overflow: hidden;
+}
+
+.pokeball-animation {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.3;
+  bottom: 20px;
+  left: -60px; /* Start off-screen */
+  filter: drop-shadow(0 2px 8px rgba(255, 203, 5, 0.2));
+  animation: rollAcross 12s linear infinite;
+}
+
+/* Rolling animation */
+@keyframes rollAcross {
+  0% {
+    left: -60px;
+    transform: rotate(0deg);
+  }
+  100% {
+    left: calc(100vw + 20px); /* End off-screen on right */
+    transform: rotate(720deg); /* Two full rotations */
+  }
+}
+
+/* Stagger multiple pokeballs */
+.pokeball-animation:nth-child(1) {
+  animation-delay: 0s;
+  bottom: 15px;
+}
+
+/* Add more pokeballs with different timing and positions */
+.rolling-pokeball::before,
+.rolling-pokeball::after {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-image: url("../assets/pokeball.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.25;
+  left: -60px;
+  filter: drop-shadow(0 2px 6px rgba(255, 203, 5, 0.15));
+}
+
+.rolling-pokeball::before {
+  bottom: 45px;
+  animation: rollAcross 15s linear infinite;
+  animation-delay: 4s;
+}
+
+.rolling-pokeball::after {
+  bottom: 75px;
+  width: 30px;
+  height: 30px;
+  animation: rollAcross 18s linear infinite;
+  animation-delay: 8s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pokeball-animation {
+    width: 35px;
+    height: 35px;
+  }
+
+  .rolling-pokeball::before,
+  .rolling-pokeball::after {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Pause animation on hover for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .pokeball-animation,
+  .rolling-pokeball::before,
+  .rolling-pokeball::after {
+    animation-play-state: paused;
+  }
+}
+
+/* Hide on very small screens to avoid clutter */
+@media (max-width: 480px) {
+  .rolling-pokeball::before,
+  .rolling-pokeball::after {
+    display: none;
+  }
+}
