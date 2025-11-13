@@ -1,5 +1,12 @@
 /* Pokémon Card Component - Square Grid Design */
 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
 .card {
   background: linear-gradient(
     145deg,
