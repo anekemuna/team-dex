@@ -7,6 +7,7 @@ import Gallery from "./pages/Gallery";
 import NotFound from "./routes/NotFound";
 import About from "./pages/About";
 import Summary from "./pages/Summary";
+import Detail from "./pages/Detail";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='create' element={<Create />} />
           <Route path='gallery' element={<Gallery />} />
+          <Route path='gallery/detail/:id' element={<Detail />} />
           <Route path='summary' element={<Summary />} />
           <Route path='about' element={<About />} />
           <Route path="*" element={<NotFound />} />
