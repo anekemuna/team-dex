@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import { supabase } from "../client";
-import "./Edit.css"
+import "./Edit.css";
 
 const Edit = () => {
   const { id } = useParams();
@@ -133,7 +133,7 @@ const Edit = () => {
     } else if (selectedType === "") {
       alert("A Type Has To Be Selected!");
     } else {
-        await supabase
+      await supabase
         .from("Pokemons")
         .update({
           name: name,
@@ -147,7 +147,29 @@ const Edit = () => {
         })
         .eq("id", id);
 
-        window.location = `/gallery/detail/${id}`
+      alert(`${pokemon.name} has been successfully updated!`);
+      window.location = `/gallery/detail/${id}`;
+    }
+  };
+
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete ${pokemon.name}? This action cannot be undone.`
+    );
+
+    if (confirmDelete) {
+      try {
+        const { error } = await supabase.from("Pokemons").delete().eq("id", id);
+
+        if (error) throw error;
+
+        alert(`${pokemon.name} has been deleted successfully!`);
+        // Redirect to gallery after successful deletion
+        window.location = "/gallery";
+      } catch (error) {
+        console.error("Error deleting Pokémon:", error);
+        alert("Failed to delete Pokémon. Please try again.");
+      }
     }
   };
 
@@ -181,144 +203,159 @@ const Edit = () => {
         <span className="pokemon-id">#{pokemon.id}</span>
       </div>
 
-        <form>
-          <div className="name-input">
-            <label htmlFor="name"><h3>Name:</h3></label>
+      <form>
+        <div className="name-input">
+          <label htmlFor="name">
+            <h3>Name:</h3>
+          </label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter Pokémon name..."
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+
+        <div className="type-selection">
+          <h3>Choose Type:</h3>
+          <div className="type-options">
+            {["Fire", "Water", "Grass", "Electric", "Psychic", "Dark"].map(
+              (type) => (
+                <label key={type} className="type-option">
+                  <input
+                    type="radio"
+                    name="pokemonType"
+                    value={type}
+                    checked={selectedType === type}
+                    onChange={(e) => setSelectedType(e.target.value)}
+                  />
+                  <span className="type-label">{type}</span>
+                </label>
+              )
+            )}
+          </div>
+        </div>
+
+        <div className="stat-controls">
+          <h3>Set Stats</h3>
+          {/* ATTACK */}
+          <div className="attack-selection">
+            <label htmlFor="attack">Attack:</label>
             <input
-              type="text"
-              id="name"
-              placeholder="Enter Pokémon name..."
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              type="range"
+              id="attack"
+              min={getStatLimits("attack", selectedType)[0]}
+              max={getStatLimits("attack", selectedType)[1]}
+              value={stats.attack}
+              onChange={(e) => updateStat("attack", e.target.value)}
             />
+            <span>
+              {stats.attack}/{getStatLimits("attack", selectedType)[1]}
+            </span>
           </div>
 
-          <div className="type-selection">
-            <h3>Choose Type:</h3>
-            <div className="type-options">
-              {["Fire", "Water", "Grass", "Electric", "Psychic", "Dark"].map(
-                (type) => (
-                  <label key={type} className="type-option">
-                    <input
-                      type="radio"
-                      name="pokemonType"
-                      value={type}
-                      checked={selectedType === type}
-                      onChange={(e) => setSelectedType(e.target.value)}
-                    />
-                    <span className="type-label">{type}</span>
-                  </label>
-                )
-              )}
-            </div>
+          {/* DEFENSE */}
+
+          <div className="defense-selection">
+            <label htmlFor="defense">Defense:</label>
+            <input
+              type="range"
+              id="defense"
+              min={getStatLimits("defense", selectedType)[0]}
+              max={getStatLimits("defense", selectedType)[1]}
+              value={stats.defense}
+              onChange={(e) => updateStat("defense", e.target.value)}
+            />
+            <span>
+              {stats.defense}/{getStatLimits("defense", selectedType)[1]}
+            </span>
           </div>
 
-          <div className="stat-controls">
-            <h3>Set Stats</h3>
-            {/* ATTACK */}
-            <div className="attack-selection">
-              <label htmlFor="attack">Attack:</label>
-              <input
-                type="range"
-                id="attack"
-                min={getStatLimits("attack", selectedType)[0]}
-                max={getStatLimits("attack", selectedType)[1]}
-                value={stats.attack}
-                onChange={(e) => updateStat("attack", e.target.value)}
-              />
-              <span>
-                {stats.attack}/{getStatLimits("attack", selectedType)[1]}
-              </span>
-            </div>
+          {/* SPECIAL ATTACK */}
 
-            {/* DEFENSE */}
-
-            <div className="defense-selection">
-              <label htmlFor="defense">Defense:</label>
-              <input
-                type="range"
-                id="defense"
-                min={getStatLimits("defense", selectedType)[0]}
-                max={getStatLimits("defense", selectedType)[1]}
-                value={stats.defense}
-                onChange={(e) => updateStat("defense", e.target.value)}
-              />
-              <span>
-                {stats.defense}/{getStatLimits("defense", selectedType)[1]}
-              </span>
-            </div>
-
-            {/* SPECIAL ATTACK */}
-
-            <div className="special-attack-selection">
-              <label htmlFor="special-attack">Special Attack:</label>
-              <input
-                type="range"
-                id="special-attack"
-                min={getStatLimits("specialAttack", selectedType)[0]}
-                max={getStatLimits("specialAttack", selectedType)[1]}
-                value={stats.specialAttack}
-                onChange={(e) => updateStat("specialAttack", e.target.value)}
-              />
-              <span>
-                {stats.specialAttack}/
-                {getStatLimits("specialAttack", selectedType)[1]}
-              </span>
-            </div>
-
-            {/* SPECIAL DEFENSE */}
-            <div className="special-defense-selection">
-              <label htmlFor="special-defense">Special Defense:</label>
-              <input
-                type="range"
-                id="special-defense"
-                min={getStatLimits("specialDefense", selectedType)[0]}
-                max={getStatLimits("specialDefense", selectedType)[1]}
-                value={stats.specialDefense}
-                onChange={(e) => updateStat("specialDefense", e.target.value)}
-              />
-              <span>
-                {stats.specialDefense}/
-                {getStatLimits("specialDefense", selectedType)[1]}
-              </span>
-            </div>
-
-            {/* SPEED */}
-            <div className="speed-selection">
-              <label htmlFor="speed">Speed:</label>
-              <input
-                type="range"
-                id="speed"
-                min={getStatLimits("speed", selectedType)[0]}
-                max={getStatLimits("speed", selectedType)[1]}
-                value={stats.speed}
-                onChange={(e) => updateStat("speed", e.target.value)}
-              />
-              <span>
-                {stats.speed}/{getStatLimits("speed", selectedType)[1]}
-              </span>
-            </div>
-
-            {/* HP */}
-            <div className="hp-selection">
-              <label htmlFor="hp">HP:</label>
-              <input
-                type="range"
-                id="hp"
-                min={getStatLimits("hp", selectedType)[0]}
-                max={getStatLimits("hp", selectedType)[1]}
-                value={stats.hp}
-                onChange={(e) => updateStat("hp", e.target.value)}
-              />
-              <span>
-                {stats.hp}/{getStatLimits("hp", selectedType)[1]}
-              </span>
-            </div>
+          <div className="special-attack-selection">
+            <label htmlFor="special-attack">Special Attack:</label>
+            <input
+              type="range"
+              id="special-attack"
+              min={getStatLimits("specialAttack", selectedType)[0]}
+              max={getStatLimits("specialAttack", selectedType)[1]}
+              value={stats.specialAttack}
+              onChange={(e) => updateStat("specialAttack", e.target.value)}
+            />
+            <span>
+              {stats.specialAttack}/
+              {getStatLimits("specialAttack", selectedType)[1]}
+            </span>
           </div>
 
-          <input type="submit" value="Update Pokémon" onClick={handleUpdate} />
-        </form>
-      </div>
+          {/* SPECIAL DEFENSE */}
+          <div className="special-defense-selection">
+            <label htmlFor="special-defense">Special Defense:</label>
+            <input
+              type="range"
+              id="special-defense"
+              min={getStatLimits("specialDefense", selectedType)[0]}
+              max={getStatLimits("specialDefense", selectedType)[1]}
+              value={stats.specialDefense}
+              onChange={(e) => updateStat("specialDefense", e.target.value)}
+            />
+            <span>
+              {stats.specialDefense}/
+              {getStatLimits("specialDefense", selectedType)[1]}
+            </span>
+          </div>
+
+          {/* SPEED */}
+          <div className="speed-selection">
+            <label htmlFor="speed">Speed:</label>
+            <input
+              type="range"
+              id="speed"
+              min={getStatLimits("speed", selectedType)[0]}
+              max={getStatLimits("speed", selectedType)[1]}
+              value={stats.speed}
+              onChange={(e) => updateStat("speed", e.target.value)}
+            />
+            <span>
+              {stats.speed}/{getStatLimits("speed", selectedType)[1]}
+            </span>
+          </div>
+
+          {/* HP */}
+          <div className="hp-selection">
+            <label htmlFor="hp">HP:</label>
+            <input
+              type="range"
+              id="hp"
+              min={getStatLimits("hp", selectedType)[0]}
+              max={getStatLimits("hp", selectedType)[1]}
+              value={stats.hp}
+              onChange={(e) => updateStat("hp", e.target.value)}
+            />
+            <span>
+              {stats.hp}/{getStatLimits("hp", selectedType)[1]}
+            </span>
+          </div>
+        </div>
+
+        <div className="form-buttons">
+          <input
+            type="submit"
+            value="Update Pokémon"
+            onClick={handleUpdate}
+            className="update-button"
+          />
+          <input
+            type="button"
+            value="Delete Pokémon"
+            onClick={handleDelete}
+            className="delete-button"
+          />
+        </div>
+      </form>
+    </div>
   );
 };
 
