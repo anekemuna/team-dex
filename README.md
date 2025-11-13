@@ -4,7 +4,7 @@ Submitted by: **Munachimso Aneke**
 
 This web app: **This web app allows you to create your own Pokémon team. You can choose the type and stats.**
 
-Time spent: **18** hours spent in total
+Time spent: **19** hours spent in total
 
 ## Required Features
 
@@ -62,10 +62,8 @@ GIF created with ...
 
 ## Notes
 
-The hardest part I faced was styling the application.
-need to lift state variables up - i.e. Pokemons list into App since gallery and summary use it
-
-- edit form component
+- The hardest part I faced was styling the application.
+- I struggled with the form. Since the form is exactly the same in Create.jsx and Edit.jsx I tried to make it into a reusable component with a mode property to toggle between edit and create. But I run into a couple errors. Due to the time constraints, I am removed the form component.
 
 ## Credits & Attribution
 
